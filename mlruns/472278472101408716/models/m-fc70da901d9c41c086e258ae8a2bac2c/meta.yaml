@@ -1,0 +1,10 @@
+artifact_location: file:///home/jupyter/cloudProject/mlruns/472278472101408716/models/m-fc70da901d9c41c086e258ae8a2bac2c/artifacts
+creation_timestamp: 1750811063851
+experiment_id: '472278472101408716'
+last_updated_timestamp: 1750811066734
+model_id: m-fc70da901d9c41c086e258ae8a2bac2c
+model_type: null
+name: LightGBM
+source_run_id: e5a5106ea1d544c9b302414d6c1b5195
+status: 2
+status_message: null

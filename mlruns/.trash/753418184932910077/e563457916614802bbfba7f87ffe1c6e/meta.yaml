@@ -1,0 +1,15 @@
+artifact_uri: file:///home/jupyter/cloudProject/mlruns/753418184932910077/e563457916614802bbfba7f87ffe1c6e/artifacts
+deleted_time: 1750809986430
+end_time: 1750784713202
+entry_point_name: ''
+experiment_id: '753418184932910077'
+lifecycle_stage: deleted
+run_id: e563457916614802bbfba7f87ffe1c6e
+run_name: valuable-koi-2
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1750784710775
+status: 3
+tags: []
+user_id: jupyter

@@ -1,0 +1,10 @@
+artifact_location: file:///home/jupyter/cloudProject/mlruns/187236345723356872/models/m-44929fd89257475ba2d00e81b5724ab5/artifacts
+creation_timestamp: 1750787040452
+experiment_id: '187236345723356872'
+last_updated_timestamp: 1750787042851
+model_id: m-44929fd89257475ba2d00e81b5724ab5
+model_type: null
+name: best_gb_model
+source_run_id: df14061db52a42ceaab47096f3778137
+status: 2
+status_message: null

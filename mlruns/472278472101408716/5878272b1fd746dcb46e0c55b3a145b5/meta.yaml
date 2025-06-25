@@ -1,0 +1,14 @@
+artifact_uri: file:///home/jupyter/cloudProject/mlruns/472278472101408716/5878272b1fd746dcb46e0c55b3a145b5/artifacts
+end_time: 1750810468984
+entry_point_name: ''
+experiment_id: '472278472101408716'
+lifecycle_stage: active
+run_id: 5878272b1fd746dcb46e0c55b3a145b5
+run_name: XGBoost_CV
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1750810465523
+status: 3
+tags: []
+user_id: jupyter

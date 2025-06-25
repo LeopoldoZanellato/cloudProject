@@ -1,0 +1,14 @@
+artifact_uri: file:///home/jupyter/cloudProject/mlruns/472278472101408716/af7095210bfb4046aeb0b794c14311c3/artifacts
+end_time: 1750810458131
+entry_point_name: ''
+experiment_id: '472278472101408716'
+lifecycle_stage: active
+run_id: af7095210bfb4046aeb0b794c14311c3
+run_name: SVM_CV
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1750810449033
+status: 3
+tags: []
+user_id: jupyter

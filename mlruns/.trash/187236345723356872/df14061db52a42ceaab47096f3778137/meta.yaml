@@ -1,0 +1,15 @@
+artifact_uri: file:///home/jupyter/cloudProject/mlruns/187236345723356872/df14061db52a42ceaab47096f3778137/artifacts
+deleted_time: 1750809982710
+end_time: 1750787042853
+entry_point_name: ''
+experiment_id: '187236345723356872'
+lifecycle_stage: deleted
+run_id: df14061db52a42ceaab47096f3778137
+run_name: Best_GradientBoosting
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1750787040431
+status: 3
+tags: []
+user_id: jupyter

@@ -1,0 +1,10 @@
+artifact_location: file:///home/jupyter/cloudProject/mlruns/774746572851800759/models/m-b2952e28296d40a7a077e62e0314ae8e/artifacts
+creation_timestamp: 1750808970360
+experiment_id: '774746572851800759'
+last_updated_timestamp: 1750808973042
+model_id: m-b2952e28296d40a7a077e62e0314ae8e
+model_type: null
+name: GradientBoosting
+source_run_id: eaf4652f5ef646e2b0e24d1a08a9c6fc
+status: 2
+status_message: null

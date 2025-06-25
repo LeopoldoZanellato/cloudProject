@@ -1,0 +1,10 @@
+artifact_location: file:///home/jupyter/cloudProject/mlruns/333135975321432898/models/m-972536a590fc46478076e58d6335aa22/artifacts
+creation_timestamp: 1750787887320
+experiment_id: '333135975321432898'
+last_updated_timestamp: 1750787889290
+model_id: m-972536a590fc46478076e58d6335aa22
+model_type: null
+name: SVM
+source_run_id: e7936cd66e7a4d159fefe60b13d84ad4
+status: 2
+status_message: null

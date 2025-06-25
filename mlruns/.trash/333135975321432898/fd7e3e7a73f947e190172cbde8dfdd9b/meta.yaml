@@ -1,0 +1,15 @@
+artifact_uri: file:///home/jupyter/cloudProject/mlruns/333135975321432898/fd7e3e7a73f947e190172cbde8dfdd9b/artifacts
+deleted_time: 1750809984627
+end_time: 1750794139113
+entry_point_name: ''
+experiment_id: '333135975321432898'
+lifecycle_stage: deleted
+run_id: fd7e3e7a73f947e190172cbde8dfdd9b
+run_name: LightGBM
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1750794134184
+status: 3
+tags: []
+user_id: jupyter

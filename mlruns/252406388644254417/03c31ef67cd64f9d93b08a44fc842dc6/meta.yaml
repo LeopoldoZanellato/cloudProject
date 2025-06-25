@@ -1,0 +1,14 @@
+artifact_uri: file:///home/jupyter/cloudProject/mlruns/252406388644254417/03c31ef67cd64f9d93b08a44fc842dc6/artifacts
+end_time: 1750810413312
+entry_point_name: ''
+experiment_id: '252406388644254417'
+lifecycle_stage: active
+run_id: 03c31ef67cd64f9d93b08a44fc842dc6
+run_name: KNN
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1750810409510
+status: 3
+tags: []
+user_id: jupyter

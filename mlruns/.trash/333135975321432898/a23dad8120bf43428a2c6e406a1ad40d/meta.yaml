@@ -1,0 +1,15 @@
+artifact_uri: file:///home/jupyter/cloudProject/mlruns/333135975321432898/a23dad8120bf43428a2c6e406a1ad40d/artifacts
+deleted_time: 1750809984627
+end_time: 1750787935723
+entry_point_name: ''
+experiment_id: '333135975321432898'
+lifecycle_stage: deleted
+run_id: a23dad8120bf43428a2c6e406a1ad40d
+run_name: SVM
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1750787932806
+status: 3
+tags: []
+user_id: jupyter
