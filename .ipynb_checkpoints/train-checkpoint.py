@@ -1,48 +1,58 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[49]:
+# In[19]:
 
 
 import pandas as pd
 import numpy as np
+import mlflow
+import mlflow.sklearn
 
-
-
+from sklearn.model_selection import cross_validate
+from sklearn.metrics import make_scorer
+from sklearn.model_selection import GridSearchCV
+from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier
+from sklearn.linear_model import LogisticRegression
+from sklearn.svm import SVC
+from sklearn.neighbors import KNeighborsClassifier
+from lightgbm import LGBMClassifier
+from xgboost import XGBClassifier  # Bônus se quiser testar também
+from sklearn.metrics import classification_report, accuracy_score, f1_score, precision_score, recall_score
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import classification_report
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import OneHotEncoder, StandardScaler
 
 
-# In[9]:
+# In[3]:
 
 
 bucket_path = 'gs://predictive-maintenance-leopoldo/manutpred.csv'
 df_raw = pd.read_csv(bucket_path, storage_options={'token': 'cloud'})
 
 
-# In[10]:
+# In[4]:
 
 
 df = df_raw.copy()
 df.head()
 
 
-# In[11]:
+# In[5]:
 
 
 drop_columns = ["TWF", "HDF", "PWF", "OSF", "RNF"]
 df.drop(drop_columns, axis=1, inplace=True)
 
 
-# In[12]:
+# In[6]:
 
 
 df.head()
 
 
-# In[13]:
+# In[7]:
 
 
 # divisão das colunas
@@ -62,19 +72,19 @@ y = df[target_column]
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42, stratify=y)
 
 
-# In[15]:
+# In[8]:
 
 
 X_train.head()
 
 
-# In[17]:
+# In[9]:
 
 
 y_test.head()
 
 
-# In[32]:
+# In[10]:
 
 
 # CATEGORICAL --> criando o encoder
@@ -89,7 +99,7 @@ encoded_train_df = pd.DataFrame(
 )
 
 
-# In[34]:
+# In[11]:
 
 
 # CATEGORICAL --> encoder + df de teste
@@ -102,7 +112,7 @@ encoded_test_df = pd.DataFrame(
 )
 
 
-# In[43]:
+# In[12]:
 
 
 # NUMERICAL --> Scaler
@@ -111,7 +121,7 @@ X_train_num = scaler.fit_transform(X_train[numerical_columns])
 X_test_num = scaler.transform(X_test[numerical_columns])
 
 
-# In[44]:
+# In[13]:
 
 
 X_train_processed = pd.DataFrame(
@@ -121,7 +131,7 @@ X_train_processed = pd.DataFrame(
 )
 
 
-# In[45]:
+# In[14]:
 
 
 X_test_processed = pd.DataFrame(
@@ -131,19 +141,39 @@ X_test_processed = pd.DataFrame(
 )
 
 
-# In[47]:
+# In[15]:
 
 
 X_train_processed.head()
 
 
-# In[48]:
+# In[16]:
+
+
+def clean_column_names(df):
+    df.columns = [
+        col.replace(' ', '_')
+           .replace('[','')
+           .replace(']','')
+           .replace('(','')
+           .replace(')','')
+           .replace('/','_per_')  # Caso tenha barras ou outros símbolos no futuro
+        for col in df.columns
+    ]
+    return df
+
+# Aplicando no treino e teste
+X_train_processed = clean_column_names(X_train_processed.copy())
+X_test_processed = clean_column_names(X_test_processed.copy())
+
+
+# In[17]:
 
 
 X_test_processed.head()
 
 
-# In[50]:
+# In[18]:
 
 
 model = RandomForestClassifier(random_state=42)
@@ -152,6 +182,104 @@ model.fit(X_train_processed, y_train)
 preds = model.predict(X_test_processed)
 
 print(classification_report(y_test, preds))
+
+
+# In[20]:
+
+
+mlflow.set_experiment("manutencao_preditiva_multimodel")
+
+models = {
+    "RandomForest": RandomForestClassifier(n_estimators=100, random_state=42),
+    "LogisticRegression": LogisticRegression(max_iter=1000, random_state=42),
+    "GradientBoosting": GradientBoostingClassifier(n_estimators=100, random_state=42),
+    "SVM": SVC(kernel='rbf', probability=True, random_state=42),
+    "KNN": KNeighborsClassifier(n_neighbors=5),
+    "LightGBM": LGBMClassifier(n_estimators=100, random_state=42),
+    "XGBoost": XGBClassifier(n_estimators=100, use_label_encoder=False, eval_metric='logloss', random_state=42)
+}
+
+for model_name, model in models.items():
+    with mlflow.start_run(run_name=model_name):
+        model.fit(X_train_processed, y_train.values.ravel())  # Corrigindo .ravel() caso dê warning
+
+        preds = model.predict(X_test_processed)
+
+        acc = accuracy_score(y_test, preds)
+        f1 = f1_score(y_test, preds)
+        precision = precision_score(y_test, preds, pos_label=1)
+        recall = recall_score(y_test, preds, pos_label=1)
+
+        # Log dos parâmetros
+        mlflow.log_param("model_type", model_name)
+
+        # Log das métricas
+        mlflow.log_metric("accuracy", acc)
+        mlflow.log_metric("f1_score", f1)
+        mlflow.log_metric("precision_class_1", precision)
+        mlflow.log_metric("recall_class_1", recall)
+
+        # Salvar o modelo
+        mlflow.sklearn.log_model(model, model_name)
+
+        print(f"Modelo: {model_name} - Acc: {acc:.4f} - F1: {f1:.4f} - Prec_1: {precision:.4f} - Rec_1: {recall:.4f}")
+
+
+# In[41]:
+
+
+### primeiro o grid search penas do gradient booosting
+
+
+# In[20]:
+
+
+models = {
+    "RandomForest": RandomForestClassifier(n_estimators=100, random_state=42),
+    "LogisticRegression": LogisticRegression(max_iter=1000, random_state=42),
+    "GradientBoosting": GradientBoostingClassifier(n_estimators=100, random_state=42),
+    "SVM": SVC(kernel='rbf', probability=True, random_state=42),
+    "KNN": KNeighborsClassifier(n_neighbors=5),
+    "LightGBM": LGBMClassifier(n_estimators=100, random_state=42),
+    "XGBoost": XGBClassifier(n_estimators=100, use_label_encoder=False, eval_metric='logloss', random_state=42)
+}
+
+
+# Scorers personalizados
+scoring = {
+    'accuracy': 'accuracy',
+    'f1': make_scorer(f1_score, pos_label=1),
+    'precision': make_scorer(precision_score, pos_label=1),
+    'recall': make_scorer(recall_score, pos_label=1)
+}
+
+mlflow.set_experiment("manutencao_preditiva_multimodel_cv")
+
+for model_name, model in models.items():
+    with mlflow.start_run(run_name=f"{model_name}_CV"):
+
+        # Cross-Validation com 5 folds
+        results = cross_validate(
+            model,
+            X_train_processed,
+            y_train.values.ravel(),
+            cv=5,
+            scoring=scoring,
+            return_train_score=False
+        )
+
+        # Log de métricas médias
+        mlflow.log_param("model_type", model_name)
+        mlflow.log_metric("cv_accuracy", results['test_accuracy'].mean())
+        mlflow.log_metric("cv_f1_score", results['test_f1'].mean())
+        mlflow.log_metric("cv_precision_class_1", results['test_precision'].mean())
+        mlflow.log_metric("cv_recall_class_1", results['test_recall'].mean())
+
+        # Treina no full train e salva o modelo final
+        model.fit(X_train_processed, y_train.values.ravel())
+        mlflow.sklearn.log_model(model, model_name)
+
+        print(f"{model_name} → CV F1: {results['test_f1'].mean():.4f} | CV Acc: {results['test_accuracy'].mean():.4f}")
 
 
 # In[ ]:
