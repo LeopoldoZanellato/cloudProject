@@ -1,0 +1,14 @@
+artifact_uri: file:///home/jupyter/cloudProject/mlruns/472278472101408716/7127d19aa91a4dc19d9603d94a1586a8/artifacts
+end_time: 1750812228242
+entry_point_name: ''
+experiment_id: '472278472101408716'
+lifecycle_stage: active
+run_id: 7127d19aa91a4dc19d9603d94a1586a8
+run_name: GradientBoosting_CV
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1750812219805
+status: 3
+tags: []
+user_id: jupyter

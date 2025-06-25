@@ -1,0 +1,14 @@
+artifact_uri: file:///home/jupyter/cloudProject/mlruns/472278472101408716/829de6e7af044a049bbd5fdd020341b1/artifacts
+end_time: 1750812216814
+entry_point_name: ''
+experiment_id: '472278472101408716'
+lifecycle_stage: active
+run_id: 829de6e7af044a049bbd5fdd020341b1
+run_name: RandomForest_CV
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1750812208649
+status: 3
+tags: []
+user_id: jupyter

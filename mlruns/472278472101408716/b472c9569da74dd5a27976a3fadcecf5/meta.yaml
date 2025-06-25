@@ -1,0 +1,14 @@
+artifact_uri: file:///home/jupyter/cloudProject/mlruns/472278472101408716/b472c9569da74dd5a27976a3fadcecf5/artifacts
+end_time: 1750811924831
+entry_point_name: ''
+experiment_id: '472278472101408716'
+lifecycle_stage: active
+run_id: b472c9569da74dd5a27976a3fadcecf5
+run_name: LightGBM_CV
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1750811921150
+status: 3
+tags: []
+user_id: jupyter

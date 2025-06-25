@@ -1,0 +1,10 @@
+artifact_location: file:///home/jupyter/cloudProject/mlruns/472278472101408716/models/m-d1245b1b9dc444dd92017e7ce79168a9/artifacts
+creation_timestamp: 1750813036679
+experiment_id: '472278472101408716'
+last_updated_timestamp: 1750813039301
+model_id: m-d1245b1b9dc444dd92017e7ce79168a9
+model_type: null
+name: XGBoost
+source_run_id: 0f0c7ffd290d4e6286a4084917da5a34
+status: 2
+status_message: null

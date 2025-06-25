@@ -1,0 +1,10 @@
+artifact_location: file:///home/jupyter/cloudProject/mlruns/472278472101408716/models/m-7141806a8afe450d8fcc37c4b287e595/artifacts
+creation_timestamp: 1750813028893
+experiment_id: '472278472101408716'
+last_updated_timestamp: 1750813031492
+model_id: m-7141806a8afe450d8fcc37c4b287e595
+model_type: null
+name: KNN
+source_run_id: ee6b26ec41ff4596870f7e2dcc50a1f8
+status: 2
+status_message: null

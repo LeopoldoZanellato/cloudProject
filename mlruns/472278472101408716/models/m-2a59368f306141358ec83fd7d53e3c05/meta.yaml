@@ -1,0 +1,10 @@
+artifact_location: file:///home/jupyter/cloudProject/mlruns/472278472101408716/models/m-2a59368f306141358ec83fd7d53e3c05/artifacts
+creation_timestamp: 1750812217051
+experiment_id: '472278472101408716'
+last_updated_timestamp: 1750812219789
+model_id: m-2a59368f306141358ec83fd7d53e3c05
+model_type: null
+name: LogisticRegression
+source_run_id: aae390b6231b4578b1697507312e3c9b
+status: 2
+status_message: null

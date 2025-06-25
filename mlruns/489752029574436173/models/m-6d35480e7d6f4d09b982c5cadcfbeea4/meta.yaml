@@ -1,0 +1,10 @@
+artifact_location: file:///home/jupyter/cloudProject/mlruns/489752029574436173/models/m-6d35480e7d6f4d09b982c5cadcfbeea4/artifacts
+creation_timestamp: 1750813330137
+experiment_id: '489752029574436173'
+last_updated_timestamp: 1750813333345
+model_id: m-6d35480e7d6f4d09b982c5cadcfbeea4
+model_type: null
+name: RandomForest
+source_run_id: 7a9a3867e9fc4b97a4016bcfd3fb8582
+status: 2
+status_message: null
