@@ -1,0 +1,14 @@
+artifact_uri: file:///home/jupyter/cloudProject/mlruns/472278472101408716/4f30d5fc3db240c3b33aff9f35e9addd/artifacts
+end_time: 1750890262767
+entry_point_name: ''
+experiment_id: '472278472101408716'
+lifecycle_stage: active
+run_id: 4f30d5fc3db240c3b33aff9f35e9addd
+run_name: LogisticRegression_CV
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1750890259846
+status: 3
+tags: []
+user_id: jupyter
